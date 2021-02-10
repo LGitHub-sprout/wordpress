@@ -1,0 +1,47 @@
+/*
+Theme Name: wphierarchy
+Theme URI: https://lsystemworks.com/portfolio/wphierarchy
+Author: Lester Carpenter
+Author URI: https://lsystemworks.com
+Description: Lester's Udemy WordPress Theme & Plugin Dev Course
+Version: 0.1
+Requires at least: ?
+Requires PHP: 5.5.3
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: wphierarchy
+Tags: REDO THESE TAGS TO FIT THE THEME: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL and is heavily influenced and inspired by the GeneratePress theme generatepress.com/.
+*/
+
+.home,
+.blog,
+.logged-in {
+	background-color: lavender;
+	color: #333;
+}
+
+.main-navigation {
+	margin: 1em 0;
+}
+a {
+	color: orange;
+}
+
+h1 {
+	/*text-transform: uppercase;*/
+	color: linen;
+	background-color: green;
+	padding:.25em;
+}
+
+/*.skip-to-content {
+	position: absolute;
+	top: -3em;
+	background-color: white;
+}
+
+.skip-to-content:focus {
+	top: 0;
+}*/
