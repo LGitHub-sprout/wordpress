@@ -15,6 +15,32 @@ Tags: REDO THESE TAGS TO FIT THE THEME: one-column, two-columns, right-sidebar, 
 This theme, like WordPress, is licensed under the GPL and is heavily influenced and inspired by the GeneratePress theme generatepress.com/.
 */
 
+.menu {
+	list-style: none;
+	display: flex;
+}
+
+.menu li {
+	padding: 10px;
+}
+
+.menu li:nth-child(3) ul {
+	display: none;
+}
+
+.todo {
+	background: linen;
+	padding: 1em;
+}
+.todo ul li {
+	padding: .5em 0;
+}
+
+code,
+pre {
+	font-size: 1.5em;
+}
+
 .home,
 .blog,
 .logged-in {

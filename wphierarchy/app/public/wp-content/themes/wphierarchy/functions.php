@@ -115,6 +115,9 @@ if ( ! function_exists( 'wphierarchy_setup_theme' ) ) {
  * if PARENT theme loads both stylesheets, child theme does nothing.
  *
  * child style uses get_stylesheet_uri
+ *
+ * 2/13/21: switched out get_stylesheet_uri for get_theme_file_uri per theme handbook:
+ * @link: https://developer.wordpress.org/themes/basics/linking-theme-files-directories/#linking-to-theme-directories
  */
 if ( ! function_exists( 'wphierarchy_scripts' ) ) {
 	add_action( 'wp_enqueue_scripts', 'wphierarchy_scripts' );
@@ -126,10 +129,31 @@ if ( ! function_exists( 'wphierarchy_scripts' ) ) {
 			array(), 'all' );
 
 		if ( is_child_theme() && apply_filters( 'wphierarchy_load_child_theme_style', true ) ) {
-			wp_enqueue_style( 'wphierarchy-child-style', get_stylesheet_uri(), array( 'wphierarchy-style' ), filemtime( get_stylesheet_directory() . '/style.css' ) );
+			wp_enqueue_style( 'wphierarchy-child-style', get_theme_file_uri() . '/style.css', array( 'wphierarchy-style' ), filemtime( get_stylesheet_directory() . '/style.css' ) );
 		}
 	}
 }
+
+if ( ! isset( $content_width ) ) {
+	$content_width = 700;
+}
+
+/**
+ * Filter the_title - fail! works but creates error
+ */
+ // if ( ! function_exists( 'filter_title' ) ) {
+// 	add_filter( 'the_title', 'filter_title' );
+// 	/**
+// 	 * Filter the_title 
+// 	 */
+// 	function filter_title( $title, $id = null ) {
+// 		if ( is_sticky() ) {
+// 			the_title( '<h1>', '</h1>', 'Yo, Whaddup ' );
+// 		// } else {
+// 		// return $title;
+// 		}
+// 	}
+// }
 
 /**
  * Get all necessary theme files
@@ -138,8 +162,11 @@ if ( ! function_exists( 'wphierarchy_scripts' ) ) {
  */
 $theme_dir = get_template_directory();
 
+require $theme_dir	. '/classes/class-wphierarchy-svg-icons.php';
+
 require $theme_dir . '/inc/theme-functions.php';
 require $theme_dir . '/inc/markup.php';
+require $theme_dir . '/inc/general.php';
 
 /**
  * Load the theme structure

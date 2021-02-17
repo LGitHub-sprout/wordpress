@@ -2,7 +2,7 @@
 /**
  * Header elements.
  *
- * @since 0.1
+ * @package wphierarchy
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,16 +15,13 @@ if ( ! function_exists( 'wphierarchy_make_header' ) ) {
 	 * Build the header.
 	 *
 	 * @since 0.1
-	 *
-	 * <?php generate_do_element_classes( 'mobile-navigation-toggle', 
-		array( 'main-navigation', 'mobile-menu-control-wrapper' ) ); ?>
 	 */
 	do_action( 'before_header_content' );
 
 	function wphierarchy_make_header() {
 		?>
-		<header class="masthead" <?php wphierarchy_do_element_classes( 'header' ); ?> role="banner">
-			<div <?php wphierarchy_do_element_classes( 'inside-header' ); ?>>
+		<header <?php wphierarchy_do_element_classes( 'header' ); ?> role="banner">
+			<div <?php wphierarchy_do_element_classes( 'inside_header' ); ?>>
 				<?php
 				/**
 				 * wphierarchy_before_header_content hook
@@ -33,7 +30,12 @@ if ( ! function_exists( 'wphierarchy_make_header' ) ) {
 				 */
 				do_action( 'wphierarchy_before_header_content' );
 
-				wphierarchy_make_header_items(); // site-branding, topbar widget, logo.
+				/**
+				 * Add the header items
+				 *
+				 * @todo: topbar widget, logo
+				 */
+				wphierarchy_make_header_items();
 
 				/**
 				 * wphierarchy_after_header_content hook
@@ -43,7 +45,7 @@ if ( ! function_exists( 'wphierarchy_make_header' ) ) {
 				 * @hooked wphierarchy_make_navigation
 				 */
 				do_action( 'wphierarchy_after_header_content' );
-				?>				
+				?>
 			</div><!-- .inside-header -->
 		</header>
 	<?php }
@@ -67,19 +69,29 @@ if ( ! function_exists( 'wphierarchy_make_header_items ') ) {
 						%3$s
 					</a>
 				</%1$s>',
-				( is_front_page() ) ? 'h1' : 'p',
+				// display h1 only when at site root
+				( is_front_page() && is_home() ) ? 'h1' : 'p',
 				esc_url( apply_filters( 'wphierarchy_site_title_href', home_url( '/' ) ) ),
 				get_bloginfo( 'name' )
 			)
 		);
+
+		$site_tagline = apply_filters( 'wphierarchy_site_tagline_output', 
+			sprintf(
+				'<p class="site-description">%1$s</p>',
+				get_bloginfo( 'description')
+				));
+
 		echo apply_filters( 'wphierarchy_site_branding_output',
 			sprintf(
 				'<div class="site-branding-container">
 					<div class="site-branding">
 						%1$s
+						%2$s
 					</div>
 				</div>',
-				$site_title
+				$site_title,
+				$site_tagline
 			)
 		);
 	}
@@ -87,7 +99,6 @@ if ( ! function_exists( 'wphierarchy_make_header_items ') ) {
 
 /**
  * @hook wp_head
- *
  */
 if ( ! function_exists( 'wphierarchy_viewport_meta' ) ) {
 	add_action( 'wp_head', 'wphierarchy_viewport_meta' );

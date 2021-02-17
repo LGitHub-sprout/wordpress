@@ -28,6 +28,53 @@ if ( ! defined( 'ABSPATH' ) ) {
 	function wphierarchy_create_header_classes( $classes ) {
 
 		$classes[] = 'site-header';
+
+		return $classes;
 	}
-	return $classes;
 }
+
+/**
+ * Adds custom classes to inside the header container.
+ *
+ * @param array $classes The existing classes.
+ * @since 0.1
+ *
+ * @package wphierarcy
+ *
+ * Inspired by (but not as good as) Generate Press.
+ */
+if ( ! function_exists( 'wphierarchy_create_inside_header_classes' ) ) {
+	add_filter( 'wphierarchy_create_inside_header_class', 'wphierarchy_create_inside_header_classes' );
+	/**
+	 * Adds custom classes to the inside-header div.
+	 */
+	function wphierarchy_create_inside_header_classes( $classes ) {
+		$classes[] = 'inside-header';
+
+		return $classes;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -45,33 +45,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @hooked wphierarchy_make_header
 	 */
 	do_action( 'wphierarchy_header' );
+
+	/**
+	 * wphierarch_after_header hook
+	 *
+	 * @since 0.1
+	 *
+	 * @hooked featured_page_header??? check this out.
+	 */
+	do_action( 'wphierarchy_after_header' );
 	?>
-
-
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	<div id="page" <?php wphierarchy_do_element_classes( 'page', 'page' ); ?>>
+		<?php
+		/**
+		 * wphierarchy_inside_page hook
+		 *
+		 * @since 0.1
+		 */
+		do_action( 'wphierarchy_inside_page' );
+		?>
+		<div id="content" class="site-content">
+			<?php
+			/**
+			 * wphiearchy_inside_site_content hook
+			 *
+			 * @since 0.1
+			 */
+			do_action( 'wphierarchy_inside_site_content' );
+			?>
