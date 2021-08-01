@@ -173,6 +173,7 @@ require $theme_dir . '/inc/general.php';
  */
 require $theme_dir . '/inc/structure/header.php';
 require $theme_dir . '/inc/structure/navigation.php';
+require $theme_dir . '/inc/structure/footer.php';
 
 
 

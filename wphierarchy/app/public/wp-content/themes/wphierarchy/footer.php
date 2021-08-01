@@ -3,6 +3,9 @@
  * Template for displaying the footer.
  *
  * @todo: Add hooks
+ *
+ * @package WordPress
+ * @subpackage wphierarchy
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,19 +16,43 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div><!-- #content .site-content -->		
 </div><!-- #page -->
 
+<?php
+	/**
+	 * wphierarchy_before_footer_container hook
+	 *
+	 * @since 0.1
+	 */
+	do_action( 'wphierarchy_before_footer_container' );
+?>
 
-<footer id="colophon" <?php wphierarchy_do_element_classes( 'site-info', 'site-info' ); ?> role="contentinfo">
-	<p>This is the REGULAR footer</p>
+<div <?php wphierarchy_do_element_classes( 'footer', 'footer' ); ?>>
+	<?php
+	/**
+	 * wphierarchy_inside_footer_container
+	 *
+	 * @since 0.1
+	 */
+	do_action( 'wphierarchy_inside_footer_container' );
 
+	/**
+	 * wphierarchy_footer hook
+	 *
+	 * @since 0.1
+	 *
+	 * @hooked wphierarchy_create_footer_widgets
+	 * @hooked wphierarchy_create_footer
+	 */
+	 do_action( 'wphierarchy_footer' );
 
-	<p><?php esc_html_e( 'Code is Poetry', 'wphierarchy' ); ?></p>
-
-	<?php printf( '<p>Powered by <a href="%1$s">%2$s</a></p>',
-		esc_url( __( 'https://wordpress.org' ) ),
-		esc_html__( 'Wordpress', 'wphierarcy' ) );
+	 /**
+	  * wphierarchy_after_footer_content hook
+	  *
+	  * @since 0.1
+	  */
+	 do_action( 'wphierarchy_after_footer_content' );
 	?>
+</div><!-- .footer -->
 
-	<?php wp_footer(); ?>
-</footer>
-	</body>
+<?php wp_footer(); ?>
+</body>
 </html>

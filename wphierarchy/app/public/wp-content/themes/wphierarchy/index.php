@@ -48,7 +48,7 @@ get_header(); ?>
 		?>
 
 		<div class="todo">
-			<h4>Stuff to do</h4>
+			<h4>Stuff to do as of August 1, 2021</h4>
 			<ul>
 				<li>work on GP options: defaults.php, css-output.php, theme-functions.php</li>
 				<ul>
@@ -64,6 +64,7 @@ get_header(); ?>
 				<li>make 'Stuff To Do' plugin so shows on all pages (widget area)</li>
 				<li>check out GP content.php 'microdata' get_schema stuff, the_content, and pagination</li>
 				<li>check out GP post image the_thumbnail stuff</li>
+				<li>build the footer-bar</li>
 			</ul>
 		</div><!-- .todo -->
 
